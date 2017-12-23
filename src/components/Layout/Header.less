@@ -1,0 +1,92 @@
+@import "~themes/vars";
+
+
+
+
+.header {
+  :global .ant-menu-horizontal {
+    & > .ant-menu-submenu {
+      float: right;
+    }
+    border: none;
+    display: inline-block;
+    background: none;
+    color: @primary-block-color;
+    
+    font-weight: bold;
+    .iconfont.headIcon {
+      font-size: 14px;
+      color: @primary-block-color;
+      margin-right: 10px;
+      font-weight: normal;
+    }
+    li:hover {
+      background: #fff;
+      .iconfont.headIcon {
+        color: @primary-color;
+      }
+    }
+  }
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  position: relative;
+  height: 60px;
+  background-color: #fff;
+  z-index: 999;
+  border-bottom: 1px solid @border-color-split;
+  transition: .4s all ease-in-out;
+  .rightWarpper {
+    display: flex;
+    padding-right: 16px;
+    float: right;
+    margin-top: 8px;
+  }
+
+  .button {
+    width: 47px;
+    height: 47px;
+    line-height: 47px;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    top: 5px;
+    color: @primary-block-color;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: @transition-ease-in;
+    border-radius: 4px;
+  }
+}
+
+.popovermenu {
+  width: 280px;
+  margin-left: 6px;
+
+  :global .ant-popover-inner-content {
+    padding: 0;
+
+    .ant-menu-inline .ant-menu-item,
+    .ant-menu-vertical .ant-menu-item {
+      border-right: 0;
+      height: 48px;
+      line-height: 48px;
+    }
+
+    .ant-menu-inline .ant-menu-item-selected,
+    .ant-menu-inline .ant-menu-selected {
+      border-right: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .header {
+    height: 60px;
+    .logo {
+      margin-top: 10px;
+    }
+    .rightWarpper {
+      margin-top: 7px;
+    }
+  }
+}

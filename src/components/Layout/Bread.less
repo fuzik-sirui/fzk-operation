@@ -1,0 +1,19 @@
+@import "~themes/vars";
+
+.bread {
+  height: 42px;
+  padding: 0 24px;
+  display: inline-block;
+  color: @text-color;
+  position: relative;
+  top: -6px;
+  a {
+    color: @text-color;
+  }
+  :global { 
+    .ant-breadcrumb > span:last-child {
+      color: @primary-color;
+    }
+  }
+}
+

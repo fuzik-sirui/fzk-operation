@@ -1,0 +1,70 @@
+@import "~themes/vars";
+.loginWrap {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  top: 0;
+  width: 100%;
+  background: url('../../assets/login-bg.png') center no-repeat;
+  background-size: cover;
+}
+.form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50%, -50%);
+  width: 400px;
+  padding: 36px;
+  padding-bottom: 40px;
+  box-shadow: 0 0 100px rgba(0,0,0,.08);
+  background-color: #fff;
+  border-radius: 4px;
+  button {
+    width: 100%;
+  }
+
+  p {
+    color: rgb(204, 204, 204);
+    text-align: center;
+    margin-top: 16px;
+
+    span {
+      &:first-child {
+        margin-right: 16px;
+      }
+    }
+  }
+}
+
+.logo {
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 24px;
+  text-align: center;
+  img {
+    width: 66px;
+    margin-right: 8px;
+    display: inline-block;
+  }
+
+  span {
+    vertical-align: text-bottom;
+    font-size: 18px;
+    text-transform: uppercase;
+    display: inline-block;
+    display: block;
+    color: @primary-color;
+    line-height: 40px;
+  }
+}
+
+.ant-spin-container,
+.ant-spin-nested-loading {
+  height: 100%;
+}
+.authcode {
+  position: absolute;
+  height: 28px;
+  right: 6px;
+  top: 6px;
+}

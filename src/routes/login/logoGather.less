@@ -1,0 +1,88 @@
+.logoGatherDemoWrapper {
+  position: absolute;
+  background: #fff;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.pointWrapper {
+  position: absolute;
+}
+
+.point {
+  border-radius: 100%;
+  background-color: #178dee !important;
+}
+
+.rightSide {
+  width: 300px;
+  height: 360px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: -50%;
+  margin: auto;
+}
+
+.rightSide * {
+  pointer-events: none;
+}
+
+@media screen and (max-width: 414px) {
+  .exhibition-details-demo {
+    overflow: hidden;
+  }
+
+  .logoGatherDemoEditWrapper {
+    transform: translateY(100%);
+    transition: transform .45s ease-in-out;
+  }
+
+  .logoGatherDemoEditWrapper.open{
+    transform: translateY(0);
+  }
+
+  .logoGatherDemoEditWrapper .anticon-down{
+    transition: transform .45s ease-in-out;
+  }
+
+  .logoGatherDemoEditWrapper.open .anticon-down{
+    transform: rotate(180deg);
+  }
+
+  .logoGatherDemoEditWrapper > div {
+    width: 90%;
+    line-height: 24px !important;
+    margin-bottom: 5px;
+  }
+
+  .exhibition-details-demo .edit-button{
+    position: absolute;
+    top: -20px;
+    width: 30px;
+    height: 20px;
+    border-radius: 30px 30px 0 0;
+    background: #f1f1f1;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin: auto;
+    box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.15);
+  }
+
+  .logoGatherDemoEditWrapper ul {
+    margin: 5px auto;
+  }
+
+  .phone-float-none {
+    clear: both;
+    margin-left: 0 !important;
+  }
+
+  .none {
+    display: none;
+  }
+
+}
