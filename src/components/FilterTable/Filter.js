@@ -1,27 +1,64 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Cascader, Form, Row, Col, Input, Select, Radio, DatePicker, Button, Icon } from 'antd'
+import { Cascader, Form, Row, Col, Input, Select, Radio, DatePicker, Button, Icon, Tooltip, Modal, Checkbox } from 'antd'
 import styles from './filter.less'
 
 const RadioGroup = Radio.Group
 const RadioButton = Radio.Button
 const Option = Select.Option
 const { MonthPicker, RangePicker } = DatePicker
+const CheckboxGroup = Checkbox.Group
 const FormItem = Form.Item
 
 export default class Filter extends Component {
   constructor (props) {
     super(props)
-    const { filterList, filterGrade, filterForm, addBtn } = this.props
+    const { filterList, filterGrade, filterForm, addBtn, tableList, otherList } = this.props
+    let tableAll = [...tableList, ...otherList]
+    let checkboxList = []
+    for (let i in tableAll) {
+      checkboxList[i] = {
+        value: tableAll[i].key,
+        label: tableAll[i].title
+      }
+    }
+    let checkboxDefault = []
+    for (let i in tableList) {
+      checkboxDefault[i] = tableList[i].key
+    }
     this.state = {
       grade: false,
+      setModal: false,
       filterList: filterList,
       filterGrade: filterGrade,
       filterForm: filterForm,
-      addBtn: addBtn
+      addBtn: addBtn,
+      tableAll: checkboxList,
+      tableDefault: checkboxDefault
     }
   }
+  
   componentWillMount () {
+  }
+  
+  opensetModal () {
+    this.setState({
+      setModal: true
+    })
+  }
+
+  setCancel = () =>  {
+    this.setState({
+      setModal: false
+    })
+  }
+
+  saveTable () {
+
+  }
+
+  settingTable = () => {
+    this.props.tableSetFun()
   }
 
   filterItem (item) {
@@ -96,11 +133,18 @@ export default class Filter extends Component {
     )
   }
 
-  
+  checkBoxChange () {
+
+  }
 
   render () {
     const self = this
-    const { filterList, filterGrade, filterForm, addBtn } = this.state
+    const { filterList, filterGrade, filterForm, addBtn, tableAll, tableDefault } = this.state
+    let checkBoxParams = {
+      options: tableAll,
+      defaultValue: tableDefault,
+      onChange: this.checkBoxChange,
+    }
     let search = () => {
       self.props.onSearch(this.state.filterForm)
     }
@@ -150,13 +194,30 @@ export default class Filter extends Component {
                       </a>
                       : null
                     }
+                    
                   </div>
                 </FormItem>
               </Col>
             </div>
           </Row>
         </Form>
-        { this.state.addBtn ? <Button className={styles.addBtn} onClick={addFun} icon="plus">新增</Button> : null }
+        <div className={styles.tableBtn}>
+          { this.state.addBtn ? <Button onClick={addFun} icon="plus">新增</Button> : null }
+          <Tooltip placement="bottom" title={'导出表格'}>
+            <Button shape="circle" onClick={() => this.saveTable()} icon="export" />
+          </Tooltip>
+          <Tooltip placement="bottom" title={'表格设置'}>
+            <Button shape="circle" onClick={() => {this.opensetModal()}} icon="setting" />
+          </Tooltip>
+        </div>
+        <Modal
+          title="表格设置"
+          visible={this.state.setModal}
+          onOk={this.settingTable}
+          onCancel={this.setCancel}
+        >
+          <CheckboxGroup className={styles.checkboxList} {...checkBoxParams} />
+        </Modal>
       </div>
     )
   }
@@ -168,5 +229,8 @@ Filter.propTypes = {
   filterForm: PropTypes.object.isRequired,
   addBtn: PropTypes.bool,
   onSearch: PropTypes.func.isRequired,
+  tableList: PropTypes.array.isRequired,
+  otherList: PropTypes.array.isRequired,
   onAdd: PropTypes.func,
+  tableSetFun: PropTypes.func.isRequired,
 }

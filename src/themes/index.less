@@ -1,4 +1,4 @@
-@import "~themes/vars";
+@import "./vars";
 
 body {
   height: 100%;
@@ -70,6 +70,9 @@ body {
       }
       > tr > td {
         text-align: center;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
       }
       tr.ant-table-row-hover > td{
         background-color: #f6f6f6;

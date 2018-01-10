@@ -49,7 +49,7 @@ let data = {
         { title: '升级信息', dataIndex: 'b', key: 'b' },
       ],
       otherList: [],
-      opreat: [{ key: 1, name: '升级' }, { key: 2, name: '压测' }, { key: 3, name: '调试' }, { key: 4, name: '图表' }],
+      opreat: [{ key: 1, name: '详情' }, { key: 2, name: '删除' }],
       rowKey: 'ENTITYID',
       localName: 'equipment',
       scroll: 1200

@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import { connect } from 'dva'
-import PropTypes from 'prop-types'
-import { Row, Col, Icon, Card, Tabs, Table, Radio, DatePicker, Tooltip, Menu, Dropdown, Spin } from 'antd'
-import numeral from 'numeral'
+import React, { Component } from 'react';
+import { connect } from 'dva';
+import PropTypes from 'prop-types';
+import { Row, Col, Icon, Card, Tabs, Table, Radio, DatePicker, Tooltip, Menu, Dropdown } from 'antd';
+import numeral from 'numeral';
 import {
   ChartCard, yuan, MiniArea, MiniBar, MiniProgress, Field, Bar, Pie, TimelineChart,
-} from '../../components/Charts'
-import Trend from '../../components/Trend'
-import NumberInfo from '../../components/NumberInfo'
-import { getTimeDistance } from '../../utils/index';
+} from 'components/Charts';
+import Trend from 'components/Trend';
+import NumberInfo from 'components/NumberInfo';
+import { getTimeDistance } from 'utils/index';
 
-import styles from './index.less'
+import styles from './index.less';
 
 const { TabPane } = Tabs;
 const { RangePicker } = DatePicker;
@@ -37,13 +37,13 @@ export default class Dashboard extends Component {
   componentDidMount() {
     this.props.dispatch({
       type: 'dashboard/fetch',
-    })
+    });
   }
 
   componentWillUnmount() {
     this.props.dispatch({
       type: 'chart/clear',
-    })
+    });
   }
 
   handleChangeSalesType = (e) => {

@@ -105,7 +105,6 @@ const App = ({ children, dispatch, app, loading, location }) => {
                 {hasPermission ? children : <Error />}
               </div>
             </div>
-            {/* <Footer /> */}
           </div>
         </div>
       </div>
